@@ -43,7 +43,7 @@ npm install
 Let's build a simple social media management system:
 
 ```typescript
-import { BuilderAgent } from '@yourorg/contract-ai-platform';
+import { BuilderAgent } from './src/builder-agent';
 
 async function main() {
   const builder = new BuilderAgent();
@@ -79,6 +79,79 @@ main().catch(console.error);
 📋 Audited Decision: High-confidence social media domain detected
 ```
 
+## Example: Financial Research Automation
+
+Build an automated financial research system:
+
+```typescript
+import { BuilderAgent } from './src/builder-agent';
+
+async function buildFinancialResearch() {
+  const builder = new BuilderAgent();
+
+  const requirement = {
+    description: "Create an automated investment research platform with SEC filing analysis and risk assessment",
+    scale: 'production' as const,
+    domain: 'finance',
+    technologies: ['python', 'postgresql', 'react']
+  };
+
+  const manifest = await builder.build(requirement);
+
+  console.log('📊 Financial Research Platform Built:');
+  console.log('🏗️ Architecture:', manifest.architecture.pattern);
+  console.log('📈 Components:', manifest.architecture.components.length);
+  console.log('🤖 Agents Used:', manifest.contracts.length);
+}
+
+buildFinancialResearch();
+```
+
+## Example: Healthcare Workflow Optimization
+
+Create a HIPAA-compliant healthcare automation system:
+
+```typescript
+import { PolicyAuthoritativeOrchestrator } from './src/domain-agent-orchestrator';
+
+async function healthcareAutomation() {
+  const orchestrator = new PolicyAuthoritativeOrchestrator();
+
+  // Define healthcare enhancement areas
+  const areas = [
+    {
+      name: "Patient Data Processing",
+      objective: "Secure patient data ingestion and processing pipeline",
+      key_requirements: [
+        "HIPAA compliance validation",
+        "PHI data masking",
+        "Audit trail generation"
+      ],
+      sources: ["HIPAA Guidelines", "Clinical Data Standards"]
+    },
+    {
+      name: "Clinical Decision Support",
+      objective: "AI-assisted clinical workflow optimization",
+      key_requirements: [
+        "Evidence-based recommendations",
+        "Provider credentialing",
+        "Outcome tracking"
+      ],
+      sources: ["Clinical Guidelines", "Medical Research"]
+    }
+  ];
+
+  const contracts = await orchestrator.orchestrateEnhancementAreas(areas);
+
+  console.log(`🏥 Generated ${contracts.length} healthcare contracts`);
+  contracts.forEach(contract => {
+    console.log(`📋 ${contract.enhancement_area}: ${contract.confidence_score} confidence`);
+  });
+}
+
+healthcareAutomation();
+```
+
 ## Understanding the Output
 
 The platform generates a complete **Build Manifest** containing:
@@ -89,30 +162,145 @@ The platform generates a complete **Build Manifest** containing:
 - **Code Artifacts**: Generated frontend, backend, and infrastructure code
 - **Deployment Config**: Production-ready deployment specifications
 
-## Orchestrating Existing Contracts
+## Example: Direct Orchestration
 
-Use the policy-authoritative orchestrator for existing YAML configurations:
+Use the policy-authoritative orchestrator with YAML-defined enhancement areas:
 
 ```typescript
-import { PolicyAuthoritativeOrchestrator } from '@yourorg/contract-ai-platform';
+import { PolicyAuthoritativeOrchestrator } from './src/domain-agent-orchestrator';
 
-async function orchestrate() {
+async function orchestrateFromYAML() {
   const orchestrator = new PolicyAuthoritativeOrchestrator();
 
-  // Load from YAML file
-  const contracts = await orchestrator.orchestrateFromClientPrompt(
-    "Create an audience segmentation system with psychographic analysis"
-  );
+  // Define enhancement areas directly
+  const areas = [
+    {
+      name: "Audience Segmentation Depth",
+      objective: "Multi-dimensional segmentation including psychographics, geo-location, and device type",
+      key_requirements: [
+        "Implement psychographic segmentation (interests, behaviors)",
+        "Add geo-location and device type targeting",
+        "Create multi-dimensional user profiles"
+      ],
+      sources: ["Analytics Data", "User Research"],
+      depends_on: []
+    },
+    {
+      name: "Performance Prediction Models",
+      objective: "Integrate machine learning models for real-time post success predictions",
+      key_requirements: [
+        "Train ML models on historical post performance data",
+        "Enable real-time success predictions",
+        "Implement continuous learning from performance data"
+      ],
+      sources: ["Performance Metrics", "ML Datasets"],
+      depends_on: ["Audience Segmentation Depth"]
+    }
+  ];
 
-  console.log(`Generated ${contracts.length} validated contracts`);
+  console.log('🎭 Starting policy-authoritative orchestration...');
+  const contracts = await orchestrator.orchestrateEnhancementAreas(areas);
+
+  console.log(`✅ Generated ${contracts.length} validated contracts`);
 
   // View audit trail
   const auditTrail = orchestrator.getAuditTrail();
-  console.log('📊 Decisions made:', auditTrail.length);
+  console.log('📊 Total decisions made:', auditTrail.length);
+
+  // Show contract details
+  contracts.forEach((contract, index) => {
+    console.log(`${index + 1}. ${contract.enhancement_area}`);
+    console.log(`   Confidence: ${(contract.confidence_score * 100).toFixed(1)}%`);
+    console.log(`   Architecture: ${contract.implementation_plan.architecture}`);
+  });
 }
 
-orchestrate();
+orchestrateFromYAML();
 ```
+
+**Expected Output:**
+```
+🎭 Starting policy-authoritative orchestration...
+📋 Processing 2 enhancement areas
+🔍 Analyzing: Audience Segmentation Depth
+🏷️ Classified as: social-media (89.2% confidence)
+✅ Policy approved routing to social-media agent
+🔍 Analyzing: Performance Prediction Models
+🏷️ Classified as: social-media (91.5% confidence)
+✅ Policy approved routing to social-media agent
+✅ Generated 2 validated contracts
+📊 Total decisions made: 4
+1. Audience Segmentation Depth
+   Confidence: 92.0%
+   Architecture: Microservices-based event-driven architecture
+2. Performance Prediction Models
+   Confidence: 88.5%
+   Architecture: Firebase-backed microservice
+```
+
+## Example: Monitoring & Observability
+
+Check system health and view real-time metrics:
+
+```typescript
+import { monitoringDashboard } from './src/monitoring-dashboard';
+
+async function checkSystemHealth() {
+  // Start monitoring
+  monitoringDashboard.start();
+
+  // Get current metrics
+  const metrics = monitoringDashboard.getMetrics();
+
+  console.log('📊 System Health Report:');
+  console.log('🔄 Contracts Processed:', metrics.totalContractsProcessed);
+  console.log('✅ Success Rate:', `${(metrics.contractSuccessRate * 100).toFixed(1)}%`);
+  console.log('⏱️ Average Response Time:', `${metrics.averageResponseTime}ms`);
+  console.log('🤖 Active Agents:', metrics.activeAgents);
+
+  // View recent audit entries
+  const recentAudits = monitoringDashboard.getRecentAudits(5);
+  console.log('\n📋 Recent Audit Entries:');
+  recentAudits.forEach(audit => {
+    console.log(`- ${audit.timestamp}: ${audit.action} by ${audit.actor}`);
+  });
+}
+
+checkSystemHealth();
+```
+
+## Running the Examples
+
+All examples can be run directly from the repository:
+
+```bash
+# Make sure you're in the project directory
+cd /Users/joewales/NODE_OUT_Master/openai-agents-js
+
+# Install dependencies
+npm install
+
+# Set up environment (copy and edit .env)
+cp .env.example .env
+# Edit .env with your API keys
+
+# Run the basic builder example
+npx ts-node examples/builder-basic.ts
+
+# Run the orchestration example
+npx ts-node examples/orchestrator-basic.ts
+
+# Run the monitoring example
+npx ts-node examples/monitoring-basic.ts
+```
+
+### Example Files Included
+
+- `examples/builder-basic.ts` - Simple system building
+- `examples/orchestrator-basic.ts` - Contract orchestration
+- `examples/monitoring-basic.ts` - Health checking
+- `examples/social-media-agent.ts` - Domain-specific agent usage
+- `examples/financial-research.ts` - Multi-agent workflows
 
 ## Next Steps
 

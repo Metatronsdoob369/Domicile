@@ -24,7 +24,7 @@ const evaluator = new Agent({
   name: 'evaluator',
   instructions:
     "You evaluate a story outline and decide if it's good enough to start writing the story. If it's not good enough, you provide feedback on what needs to be improved. Never give it a pass on the first try.",
-  outputType: EvaluationFeedback,
+  outputType: EvaluationFeedback as any,
 });
 
 async function main() {
@@ -51,7 +51,7 @@ async function main() {
       console.log('Story outline generated');
 
       const evaluatorResult = await run(evaluator, inputItems);
-      const result = evaluatorResult.finalOutput;
+      const result = evaluatorResult.finalOutput as z.infer<typeof EvaluationFeedback>;
       console.log(`Evaluator score: ${result?.score}`);
 
       if (result?.score === 'pass') {
