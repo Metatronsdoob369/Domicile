@@ -1,286 +1,177 @@
-# Contract-Driven AI Platform
+# 🏗️ Domicile - Contract-Driven AI Platform
 
-**The first AI orchestration platform that treats agents like APIs - with contracts, governance, and trust scores.**
+**Status:** Integration Phase  
+**Architecture:** 6-Layer Contract-First Design with Circadian Learning
 
-Stop fighting with prompts. Start building with contracts.
+## 🎯 What Is Domicile?
 
-[![Tests](https://github.com/contract-ai-platform/core/workflows/CI/badge.svg)](https://github.com/contract-ai-platform/core/actions)
-[![Coverage](https://codecov.io/gh/contract-ai-platform/core/badge.svg)](https://codecov.io/gh/contract-ai-platform/core)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)](https://www.typescriptlang.org/)
+Domicile is the first AI platform that:
+- **Eliminates prompt fragility** through structured contracts
+- **Prevents agent gaming** with independent policy governance  
+- **Learns while you sleep** via 3AM dream cycles
+- **Starts with mutual understanding** between human and AI
 
-## The Problem
+## 🌙 The Circadian Philosophy
 
-Current AI orchestration: Hope the prompt works, pray it doesn't break, no way to govern or audit decisions.
+```
+Day:   Human + AI collaborate with shared vision
+Night: System dreams about decisions vs outcomes  
+Dawn:  Wake up with better mutual understanding
+```
 
-## The Solution
+**Result:** AI that gets better at understanding what you actually want.
 
-**Contracts** define what agents should do (like OpenAPI for REST APIs)  
-**Policy Engine** governs which agents execute (like K8s for containers)  
-**Trust Scores** track agent performance (like credit scores for reliability)
+## 📁 Architecture
 
-## Why Contracts > Prompts
+```
+domicile/
+├── packages/
+│   ├── core/           # Layer 2: Orchestration (Policy, Registry, Classifier)
+│   ├── agents/         # Layer 3: Execution (Domain-specific agents)  
+│   ├── contracts/      # Layer 4: Contracts & Schemas
+│   ├── covenant/       # Layer 2: Governance (Trust oracles)
+│   ├── interface/      # Layer 1: User Interface (CLI, Builder)
+│   ├── data/          # Layer 4: Data & Storage (Pinecone, Knowledge)
+│   ├── observability/ # Layer 5: Monitoring (Dashboard, Performance)
+│   └── operations/    # Layer 6: DevOps (Deployment, Health)
+├── docs/              # Documentation
+├── examples/          # Usage examples
+└── tests/            # Integration tests
+```
 
-| Aspect | Traditional Prompts | Contract-Driven |
-|--------|-------------------|-----------------|
-| **Reliability** | Variable, context-dependent | Deterministic, validated |
-| **Governance** | Manual oversight required | Automated policy enforcement |
-| **Composition** | Difficult to combine | Dependency graphs, orchestration |
-| **Debugging** | Black box, hard to trace | Full audit trails, structured logs |
-| **Scaling** | Manual integration per agent | Pluggable architecture, auto-discovery |
-| **Trust** | Based on reputation | Based on measured performance metrics |
-
-## Key Features
-
-- ✅ **Contract-Driven Architecture**: Structured, typed contracts instead of ambiguous prompts
-- ✅ **Policy-Governed Orchestration**: Independent policy engine prevents agent gaming
-- ✅ **Trust-Based Agent Selection**: Agents selected by proven performance metrics
-- ✅ **Self-Evolving System**: Platform can propose and approve its own improvements
-- ✅ **Enterprise Observability**: Complete audit trails and real-time monitoring
-- ✅ **Multi-Domain Support**: Social media, financial research, healthcare, and more
-- ✅ **Production-Grade Operations**: CI/CD, runbooks, backup/recovery
-
-## Quick Start (5 minutes)
-
-### Prerequisites
-
-- Node.js 22+
-- OpenAI API key
-- Pinecone API key (optional, for vector storage)
-
-### Installation
+## 🚀 Quick Start
 
 ```bash
-npm install @yourorg/contract-ai-platform
-```
-
-### Environment Setup
-
-```bash
-cp .env.example .env
-# Edit .env with your API keys
-```
-
-### Your First Contract
-
-```typescript
-import { BuilderAgent } from '@yourorg/contract-ai-platform';
-
-const builder = new BuilderAgent();
-
-const requirement = {
-  description: "Build a social media management platform for agencies",
-  scale: 'production' as const,
-  technologies: ['auto-detect']
-};
-
-const manifest = await builder.build(requirement);
-console.log('Built system:', manifest.projectId);
-```
-
-**Output**: Complete React/Next.js frontend, Node.js backend, PostgreSQL database, Docker deployment, monitoring dashboard, and full test suite.
-
-### Orchestrate Existing Contracts
-
-```typescript
-import { PolicyAuthoritativeOrchestrator } from '@yourorg/contract-ai-platform';
-
-const orchestrator = new PolicyAuthoritativeOrchestrator();
-
-// Load enhancement areas from YAML
-const contracts = await orchestrator.orchestrateFromClientPrompt(
-  "Build comprehensive audience segmentation with psychographic analysis"
-);
-
-console.log(`Generated ${contracts.length} validated contracts`);
-```
-
-## Architecture Overview
-
-```
-┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│   Interface     │    │  Orchestration   │    │   Execution     │
-│   Layer         │    │    Layer         │    │    Layer        │
-│                 │    │                  │    │                 │
-│ • YAML Config   │    │ • Policy Engine  │    │ • Domain Agents │
-│ • Builder Agent │    │ • Domain Class.  │    │ • Trust Scores  │
-│ • Natural Lang. │    │ • Agent Registry │    │ • Contracts     │
-└─────────────────┘    └──────────────────┘    └─────────────────┘
-         │                       │                       │
-         └───────────────────────┼───────────────────────┘
-                                 │
-                    ┌──────────────────┐
-                    │   Data Layer     │
-                    │                  │
-                    │ • Pinecone       │
-                    │ • Contract Store │
-                    │ • Audit Trails   │
-                    └──────────────────┘
-```
-
-## Domain Agents
-
-### Social Media Agent
-Content creation, engagement optimization, audience analysis, multi-platform integration.
-
-### Financial Research Agent
-Multi-agent workflow: plan → search → write → verify with fact-checking.
-
-### Healthcare Agent (Coming Soon)
-HIPAA-compliant medical workflows with privacy preservation.
-
-### Custom Agents
-Easy to add new domains with standardized interfaces.
-
-## Use Cases
-
-### Enterprise Social Media Management
-```yaml
-name: "Enterprise Social Platform"
-objective: "Multi-brand social media orchestration with governance"
-key_requirements:
-  - "Centralized content approval workflows"
-  - "Brand compliance automation"
-  - "Cross-platform performance analytics"
-  - "Crisis management protocols"
-```
-
-### Financial Research Automation
-```yaml
-name: "Institutional Research Platform"
-objective: "Automated investment research with regulatory compliance"
-key_requirements:
-  - "Multi-source data aggregation"
-  - "Fact verification pipelines"
-  - "Regulatory reporting automation"
-  - "Risk assessment integration"
-```
-
-### Healthcare Workflow Optimization
-```yaml
-name: "Clinical Decision Support"
-objective: "AI-assisted clinical workflows with HIPAA compliance"
-key_requirements:
-  - "Patient data privacy protection"
-  - "Evidence-based recommendation engine"
-  - "Integration with EHR systems"
-  - "Clinical outcome tracking"
-```
-
-## Documentation
-
-- **[Architecture Guide](ARCHITECTURE.md)** - Complete system design and patterns
-- **[Getting Started](docs/getting-started.md)** - Step-by-step tutorials
-- **[API Reference](docs/api/)** - Full API documentation
-- **[Deployment Guide](DEPLOYMENT_GUIDE.md)** - Production deployment procedures
-- **[Operations Runbook](Data_Correction_Runbook.md)** - Incident response procedures
-
-## Development
-
-### Prerequisites
-- Node.js 22+
-- pnpm (recommended) or npm
-- OpenAI API key
-- Pinecone API key (for vector features)
-
-### Setup
-```bash
+# Install dependencies
 pnpm install
-cp .env.example .env
-pnpm build
-pnpm test
+
+# Run integration validation  
+pnpm validate
+
+# Health check
+pnpm health-check
+
+# Start development
+pnpm dev
 ```
 
-### Key Scripts
+### Real-Estate Demo Agents
+
 ```bash
-# Development
-pnpm dev                    # Start development server
-pnpm build                  # Build for production
-pnpm test                   # Run test suite
-pnpm test:integration       # Run integration tests
-
-# Orchestration
-pnpm orchestrator           # CLI for contract orchestration
-pnpm orchestrator:validate  # Validate contracts
-pnpm orchestrator:execute   # Execute contract workflows
-
-# Monitoring
-pnpm dashboard              # Start monitoring dashboard
-pnpm knowledge:health-check # Check system health
+export OPENAI_API_KEY=sk-...
+export STRIPE_SECRET_KEY=sk_test_...
+# Optional: clear ports 5052/5053/8080 before restart
+./scripts/reset-real-estate.sh
+# Progressive startup (agents + MCP):
+./scripts/start-real-estate.sh
+# To stop services later:
+./scripts/stop-real-estate.sh
+# Once everything is up:
+MCP_BASE_URL=http://localhost:8080 MCP_BEARER_TOKEN=${MCP_BEARER_TOKEN:-dev-token-12345} npm run demo:real-estate
 ```
 
-## Contributing
+> Tip: add handy aliases by editing `~/.zshrc`, e.g.
+> `alias killalldomicile='cd /Users/joewales/NODE_OUT_Master/contract-ai-platform && ./scripts/reset-real-estate.sh'`
+> so cleanups are one command.
 
-We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+Call `/scrape-properties` on the Zillow service, then feed the JSON payload into
+`/process-overflow-lead` on Secondary Eve to watch overflow leads get priced and
+published to the investor marketplace. These endpoints are ideal MCP targets for
+Domicile manifests.
 
-### Development Workflow
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Make your changes
-4. Add tests for new functionality
-5. Ensure all tests pass (`pnpm test`)
-6. Submit a pull request
+When running the MCP server set:
 
-### Code Standards
-- TypeScript strict mode enabled
-- Comprehensive test coverage (>80%)
-- Commit messages follow conventional format
-- All PRs require review and CI passing
+```bash
+export REALESTATE_ZILLOW_URL=http://localhost:5052
+export REALESTATE_SECONDARY_URL=http://localhost:5053
+```
 
-## Security & Compliance
+so the new `real_estate.scrape` and `real_estate.package` tools can reach the demo agents.
 
-- **Policy Engine**: Automated governance prevents unauthorized actions
-- **Audit Trails**: Complete traceability of all decisions
-- **Data Encryption**: End-to-end encryption for sensitive data
-- **Compliance**: SOC2, GDPR, HIPAA support (domain-specific)
-- **Access Control**: Role-based permissions and approval workflows
+## 🔄 Component Sources
 
-## Performance & Scaling
+**Integrated from three projects:**
+- `openai-agents-js` → Core orchestration platform (Layers 1-6)
+- `contracts` → Contract schema system (Layer 4 + governance)  
+- `covenant-ai` → Policy/trust engine (Layer 2 governance)
 
-- **Parallel Execution**: Concurrent LLM calls with optimization
-- **Caching**: Intelligent response caching and reuse
-- **Load Balancing**: Distributed agent execution
-- **Monitoring**: Real-time performance metrics and alerting
-- **Auto-scaling**: Kubernetes-native horizontal scaling
+## 📊 Integration Status
 
-## Roadmap
+- [x] Components migrated from source projects
+- [x] Package structure created
+- [ ] Import paths updated for monorepo
+- [ ] TypeScript compilation working
+- [ ] Basic tests passing
+- [ ] Documentation complete
 
-### Q1 2025
-- Healthcare agent with HIPAA compliance
-- Multi-language contract support
-- Advanced dependency resolution
+## 🏗️ Development
 
-### Q2 2025
-- Enterprise SSO integration
-- Custom policy rule engine
-- Real-time collaboration features
+```bash
+# Watch for changes
+pnpm dev
 
-### Q3 2025
-- Quantum computing integration
-- Advanced self-evolution
-- Third-party agent marketplace
+# Run tests
+pnpm test
 
-## Community
+# Build all packages
+pnpm build
 
-- **GitHub Issues**: Bug reports and feature requests
-- **Discussions**: General questions and community support
-- **Discord**: Real-time chat and collaboration
-- **Newsletter**: Monthly updates and best practices
+# Lint code
+pnpm lint
+```
 
-## License
+## 🌟 Key Features
 
-MIT License - see [LICENSE](LICENSE) for details.
+### **Contract-Driven Architecture**
+- Every AI interaction defined by typed, validated contracts
+- No more prompt fragility or ambiguous outputs
+- Composable contracts with dependency management
 
-## Acknowledgments
+### **Policy Governance** 
+- Independent policy engine prevents agent self-preference
+- Trust scores based on measured performance metrics
+- Automated compliance checking and audit trails
 
-Built on the shoulders of giants:
-- [OpenAI Agents SDK](https://github.com/openai/openai-agents-js) - Foundation framework
-- [Pinecone](https://www.pinecone.io/) - Vector database for contract storage
-- [Zod](https://github.com/colinhacks/zod) - Schema validation
-- [Node.js](https://nodejs.org/) - Runtime platform
+### **Circadian Learning (N8N Integration)**
+- 3AM dream cycles analyze performance patterns
+- Failed approaches archived with lessons learned
+- Constitutional mutations proposed based on evidence
+- System wakes up smarter every morning
+
+### **Multi-Agent Workflows**
+- Financial research agent with 5-phase workflow
+- Social media optimization with engagement tracking  
+- Research agents with graph-based knowledge retrieval
+- Self-evolving meta-framework with safety gates
+
+## 📖 Documentation
+
+- [Integration Plan](./domicile/DOMICILE_INTEGRATION_PLAN.md) - Master blueprint
+- [Component Mapping](./domicile/COMPONENT_MAPPING.md) - Migration details
+- [Roadmap](./domicile/INTEGRATION_ROADMAP.md) - Implementation timeline
+- [Circadian Philosophy](./domicile/CIRCADIAN_PHILOSOPHY.md) - Learning architecture
+
+## 🎊 What Makes This Revolutionary
+
+**Traditional AI:** Fragile prompts, unpredictable outputs, manual scaling  
+**Domicile:** Structured contracts, governed agents, self-improving platform
+
+**Traditional Collaboration:** "Build me a thing" → Iterate 10x until right  
+**Domicile:** Starts with accurate understanding, delivers correct output first time
+
+**Traditional Learning:** Static models, manual updates, human oversight  
+**Domicile:** Dreams about performance, proposes improvements, evolves safely
+
+## 🚀 The Vision
+
+Create a platform where AI and humans begin collaboration with **mutual understanding** and **shared vision** of the output.
+
+Where every failed attempt teaches the system to understand you better.
+
+Where software writes better versions of itself.
+
+**Welcome to the future of human-AI collaboration.** 🌅
 
 ---
 
-**Ready to stop fighting prompts and start building with contracts?**
-
-[Get Started](docs/getting-started.md) | [Architecture](ARCHITECTURE.md) | [API Docs](docs/api/) | [Community](https://github.com/contract-ai-platform/core/discussions)
+*"The platform that dreams about its decisions vs outcomes, learning to understand you better while you sleep."*
