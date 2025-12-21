@@ -7,7 +7,7 @@
    - [What are Contracts?](#what-are-contracts)
    - [Why Contracts > Prompts](#why-contracts--prompts)
    - [Contract Lifecycle](#contract-lifecycle)
-3. [System Architecture](#system-architecture)
+3.   [System Architecture](#DOMICILE)
    - [Layer 1: Interface Layer](#layer-1-interface-layer)
    - [Layer 2: Orchestration Layer](#layer-2-orchestration-layer)
    - [Layer 3: Execution Layer](#layer-3-execution-layer)
@@ -66,12 +66,13 @@ Current AI orchestration platforms suffer from several critical limitations:
 
 ### The Contract-Driven Solution
 
-This platform introduces a revolutionary approach:
-
+This platform introduces a revolutionary approach:                        .  
 - **Structured Contracts**: Every agent interaction is defined by a typed, validated contract
 - **Policy Governance**: Independent policy engine ensures all actions comply with rules
 - **Trust-Based Selection**: Agents are selected based on proven performance metrics
-- **Self-Evolving System**: The platform can propose and approve its own improvements
+   **The CIRCADIAN PHILOSOPHY**
+- **Self-Evolving System**: The platform can propose and approve its own improvements, off peak hours. It doesnt sleep....it dreams, about its desisions vs. out comes 
+
 - **Enterprise-Grade Observability**: Complete audit trails and real-time monitoring
 
 ### Market Impact
@@ -132,6 +133,8 @@ Unlike prompts, contracts are:
 ## System Architecture
 
 The platform is organized into six distinct layers, each with specific responsibilities and clear boundaries.
+
+For a narrative view of how those layers align with the agent divisions and Circadian cadence, see `domicile/docs/agent-ecosystem.ts` (plus its semantic companion `domicile/docs/ecosystem-semantic-refiner.ts`). They translate this architecture into the UPS-driven multi-agent loop shipped with Domicile.
 
 ### Layer 1: Interface Layer
 

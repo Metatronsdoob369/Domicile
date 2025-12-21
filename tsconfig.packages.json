@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "@domicile/core": ["domicile/packages/core/dist/index.d.ts"],
+      "@domicile/core/*": ["domicile/packages/core/dist/*"],
+      "@domicile/data": ["domicile/packages/data/dist/index.d.ts"],
+      "@domicile/data/*": ["domicile/packages/data/dist/*"],
+      "@domicile/interface": ["domicile/packages/interface/dist/index.d.ts"],
+      "@domicile/interface/*": ["domicile/packages/interface/dist/*"],
+      "@domicile/observability": ["domicile/packages/observability/dist/index.d.ts"],
+      "@domicile/observability/*": ["domicile/packages/observability/dist/*"],
+      "@domicile/covenant": ["domicile/packages/covenant/dist/index.d.ts"],
+      "@domicile/covenant/*": ["domicile/packages/covenant/dist/*"]
+    }
+  }
+}

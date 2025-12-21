@@ -14,22 +14,21 @@
     "noEmit": false,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"],
-      "@/components/*": ["./components/*"]
+      "@domicile/core/*": ["domicile/packages/core/src/*"],
+      "@domicile/data/*": ["domicile/packages/data/src/*"],
+      "@domicile/interface/*": ["domicile/packages/interface/src/*"],
+      "@domicile/observability/*": ["domicile/packages/observability/src/*"],
+      "@domicile/covenant/*": ["domicile/packages/covenant/src/*"]
     },
     "jsx": "react-jsx"
   },
   "include": [
-    "src/**/*",
-    "agent-contracts/**/*",
-    "orchestrator/**/*",
-    "scripts/**/*",
-    "tests/**/*",
-    "components/**/*",
-    "*.tsx",
-    "*.ts"
+    "domicile/packages/*/src/**/*",
+    "examples/**/*",
+    "*.ts",
+    "*.tsx"
   ],
   "exclude": [
-    "scripts/codegen/templates/**/*"
+    "domicile/packages/*/dist/**/*"
   ]
 }
