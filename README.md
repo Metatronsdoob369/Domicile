@@ -1,177 +1,112 @@
-# 🏗️ Domicile - Contract-Driven AI Platform
+# 🏗️ Domicile — Contract-Driven AI Platform
 
-**Status:** Integration Phase  
-**Architecture:** 6-Layer Contract-First Design with Circadian Learning
+**Status:** Integration Phase • **Architecture:** 6-layer contract stack synchronized by the Circadian loop
 
-## 🎯 What Is Domicile?
+Domicile treats agents like governed APIs. Contracts define the work, Covenant enforces trust, and the Circadian loop lets the system dream at 3 AM so it wakes up understanding you better.
 
-Domicile is the first AI platform that:
-- **Eliminates prompt fragility** through structured contracts
-- **Prevents agent gaming** with independent policy governance  
-- **Learns while you sleep** via 3AM dream cycles
-- **Starts with mutual understanding** between human and AI
+## 🧠 Operating Narrative
 
-## 🌙 The Circadian Philosophy
+- **Agent Ecosystem Loop:** `domicile/docs/agent-ecosystem.ts` explains how the monorepo maps to Foundation, Monetization, Resilience, and Observability divisions.
+- **Semantic Refiner:** `domicile/docs/ecosystem-semantic-refiner.ts` defines the `IntentManifest`, metabolic states, and Circadian pulses that the MCP/CLI pass around.
+- **Agent Codex:** `docs/concepts/agent-codex.md` lists every UPS (Unit‑Per‑Skill) persona with the rules that keep them in sync.
 
-```
-Day:   Human + AI collaborate with shared vision
-Night: System dreams about decisions vs outcomes  
-Dawn:  Wake up with better mutual understanding
-```
+Pair these with `ARCHITECTURE.md` for the full six-layer breakdown.
 
-**Result:** AI that gets better at understanding what you actually want.
-
-## 📁 Architecture
+## 🗂 Monorepo Layout
 
 ```
 domicile/
 ├── packages/
-│   ├── core/           # Layer 2: Orchestration (Policy, Registry, Classifier)
-│   ├── agents/         # Layer 3: Execution (Domain-specific agents)  
-│   ├── contracts/      # Layer 4: Contracts & Schemas
-│   ├── covenant/       # Layer 2: Governance (Trust oracles)
-│   ├── interface/      # Layer 1: User Interface (CLI, Builder)
-│   ├── data/          # Layer 4: Data & Storage (Pinecone, Knowledge)
-│   ├── observability/ # Layer 5: Monitoring (Dashboard, Performance)
-│   └── operations/    # Layer 6: DevOps (Deployment, Health)
-├── docs/              # Documentation
-├── examples/          # Usage examples
-└── tests/            # Integration tests
+│   ├── core           # Layer 2: orchestrator, policy engine, agent registry
+│   ├── agents         # Layer 3: domain agents (financial, research, etc.)
+│   ├── contracts      # Layer 4: schemas + task contracts
+│   ├── covenant       # Layer 2 governance (trust, voice moat, oracles)
+│   ├── interface      # Layer 1 (MCP server, CLI, HTTP entrypoints)
+│   ├── data           # Layer 4 data plane (Pinecone client, trainpacks)
+│   └── observability  # Layer 5 telemetry dashboard + perf metrics
+├── docs/              # Architecture + Codex references
+├── scripts/           # Reset/start/stop helpers (real-estate demo, etc.)
+└── examples/          # Usage examples (kept local for now)
 ```
 
-## 🚀 Quick Start
+## ⚙️ Quick Start
 
 ```bash
-# Install dependencies
-pnpm install
-
-# Run integration validation  
-pnpm validate
-
-# Health check
-pnpm health-check
-
-# Start development
-pnpm dev
+cd /Users/joewales/NODE_OUT_Master/contract-ai-platform
+npm install                      # install workspaces
+npm run build                    # compile every package
+npm run test                     # run Vitest (mocks monitoring port 3001)
 ```
 
-### Real-Estate Demo Agents
+### MCP + Real-Estate Demo Stack
 
 ```bash
 export OPENAI_API_KEY=sk-...
+# optional Stripe for downstream flows
 export STRIPE_SECRET_KEY=sk_test_...
-# Optional: clear ports 5052/5053/8080 before restart
+
+# one-shot cleanup (stops MCP + demo servers, clears ports 5052/5053/8080)
 ./scripts/reset-real-estate.sh
-# Progressive startup (agents + MCP):
+
+# progressive startup (Zillow scraper → package service → MCP interface)
 ./scripts/start-real-estate.sh
-# To stop services later:
+
+# run the chained demo call once everything is online
+MCP_BASE_URL=http://localhost:8080 \
+MCP_BEARER_TOKEN=${MCP_BEARER_TOKEN:-dev-token-12345} \
+npm run demo:real-estate
+
+# later, stop them:
 ./scripts/stop-real-estate.sh
-# Once everything is up:
-MCP_BASE_URL=http://localhost:8080 MCP_BEARER_TOKEN=${MCP_BEARER_TOKEN:-dev-token-12345} npm run demo:real-estate
 ```
 
-> Tip: add handy aliases by editing `~/.zshrc`, e.g.
-> `alias killalldomicile='cd /Users/joewales/NODE_OUT_Master/contract-ai-platform && ./scripts/reset-real-estate.sh'`
-> so cleanups are one command.
+Need an alias? Add something like
+`alias killalldomicile='cd ~/NODE_OUT_Master/contract-ai-platform && ./scripts/reset-real-estate.sh'`
+to your `~/.zshrc`.
 
-Call `/scrape-properties` on the Zillow service, then feed the JSON payload into
-`/process-overflow-lead` on Secondary Eve to watch overflow leads get priced and
-published to the investor marketplace. These endpoints are ideal MCP targets for
-Domicile manifests.
+## 🔐 Why Contracts > Prompts
 
-When running the MCP server set:
+| Traditional Prompting | Domicile |
+| --- | --- |
+| Fragile text instructions | Typed contracts validated with Zod |
+| Agent self-preference | Covenant trust scores + policy barriers |
+| Manual auditing | Ledger + observability dashboard (`@domicile/observability`) |
+| Static systems | Circadian loop proposes improvements off-hours |
+
+## 🧩 Foundation Highlights
+
+- **Circadian Loop:** Day = human + AI collaboration. Night = dream about decisions vs. outcomes. Dawn = new mutual understanding.
+- **Governance:** Circuit breakers, quarantine modes, and rollback ledgers ensure agents cannot skip the policy gate.
+- **Memory:** Pinecone-backed knowledge graph, trainpack builder, and ROI vectors keep monetization loops contextual.
+- **Observability:** Monitoring dashboard (Express + Tailwind) streaming SSE health data, accessible at `http://localhost:3001`.
+
+## 📚 Documentation Map
+
+- [`ARCHITECTURE.md`](./ARCHITECTURE.md) — full six-layer blueprint.
+- [`docs/concepts/agent-codex.md`](./docs/concepts/agent-codex.md) — UPS personas + governance barriers.
+- [`domicile/DOMICILE_INTEGRATION_PLAN.md`](./domicile/DOMICILE_INTEGRATION_PLAN.md) — integration punch list.
+- [`domicile/COMPONENT_MAPPING.md`](./domicile/COMPONENT_MAPPING.md) — source → destination mapping.
+- [`domicile/CIRCADIAN_PHILOSOPHY.md`](./domicile/CIRCADIAN_PHILOSOPHY.md) — learning model.
+- [`domicile/docs/agent-ecosystem.ts`](./domicile/docs/agent-ecosystem.ts) & [`domicile/docs/ecosystem-semantic-refiner.ts`](./domicile/docs/ecosystem-semantic-refiner.ts) — narrative + semantic payloads.
+
+## 🧪 Development Scripts
 
 ```bash
-export REALESTATE_ZILLOW_URL=http://localhost:5052
-export REALESTATE_SECONDARY_URL=http://localhost:5053
+npm run build:packages   # build each workspace
+npm run mcp:start -w @domicile/interface   # start the MCP server
+npm run demo:real-estate                    # run the documented demo
+CI=1 npm test                                # CI-friendly vitest run
 ```
 
-so the new `real_estate.scrape` and `real_estate.package` tools can reach the demo agents.
+## 🌅 Vision
 
-## 🔄 Component Sources
+Domicile is the collaboration surface where:
+- Software understands what you mean the first time because contracts and manifests encode it.
+- Every failed attempt becomes a training signal the system reflects on overnight.
+- Agents evolve safely because Covenant refuses to ship anything with a resilience score < 80.
 
-**Integrated from three projects:**
-- `openai-agents-js` → Core orchestration platform (Layers 1-6)
-- `contracts` → Contract schema system (Layer 4 + governance)  
-- `covenant-ai` → Policy/trust engine (Layer 2 governance)
-
-## 📊 Integration Status
-
-- [x] Components migrated from source projects
-- [x] Package structure created
-- [ ] Import paths updated for monorepo
-- [ ] TypeScript compilation working
-- [ ] Basic tests passing
-- [ ] Documentation complete
-
-## 🏗️ Development
-
-```bash
-# Watch for changes
-pnpm dev
-
-# Run tests
-pnpm test
-
-# Build all packages
-pnpm build
-
-# Lint code
-pnpm lint
-```
-
-## 🌟 Key Features
-
-### **Contract-Driven Architecture**
-- Every AI interaction defined by typed, validated contracts
-- No more prompt fragility or ambiguous outputs
-- Composable contracts with dependency management
-
-### **Policy Governance** 
-- Independent policy engine prevents agent self-preference
-- Trust scores based on measured performance metrics
-- Automated compliance checking and audit trails
-
-### **Circadian Learning (N8N Integration)**
-- 3AM dream cycles analyze performance patterns
-- Failed approaches archived with lessons learned
-- Constitutional mutations proposed based on evidence
-- System wakes up smarter every morning
-
-### **Multi-Agent Workflows**
-- Financial research agent with 5-phase workflow
-- Social media optimization with engagement tracking  
-- Research agents with graph-based knowledge retrieval
-- Self-evolving meta-framework with safety gates
-
-## 📖 Documentation
-
-- [Integration Plan](./domicile/DOMICILE_INTEGRATION_PLAN.md) - Master blueprint
-- [Component Mapping](./domicile/COMPONENT_MAPPING.md) - Migration details
-- [Roadmap](./domicile/INTEGRATION_ROADMAP.md) - Implementation timeline
-- [Circadian Philosophy](./domicile/CIRCADIAN_PHILOSOPHY.md) - Learning architecture
-
-## 🎊 What Makes This Revolutionary
-
-**Traditional AI:** Fragile prompts, unpredictable outputs, manual scaling  
-**Domicile:** Structured contracts, governed agents, self-improving platform
-
-**Traditional Collaboration:** "Build me a thing" → Iterate 10x until right  
-**Domicile:** Starts with accurate understanding, delivers correct output first time
-
-**Traditional Learning:** Static models, manual updates, human oversight  
-**Domicile:** Dreams about performance, proposes improvements, evolves safely
-
-## 🚀 The Vision
-
-Create a platform where AI and humans begin collaboration with **mutual understanding** and **shared vision** of the output.
-
-Where every failed attempt teaches the system to understand you better.
-
-Where software writes better versions of itself.
-
-**Welcome to the future of human-AI collaboration.** 🌅
+**It’s not just another SDK—it’s a governed ecosystem that learns while you sleep.**
 
 ---
 
-*"The platform that dreams about its decisions vs outcomes, learning to understand you better while you sleep."*
+*"The platform that dreams about its decisions vs. outcomes, learning to understand you better while you sleep."*
