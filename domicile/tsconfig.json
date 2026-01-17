@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext", 
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "@domicile/core/*": ["packages/core/src/*"],
+      "@domicile/agents/*": ["packages/agents/src/*"],
+      "@domicile/contracts/*": ["packages/contracts/src/*"], 
+      "@domicile/covenant/*": ["packages/covenant/src/*"],
+      "@domicile/interface/*": ["packages/interface/src/*"],
+      "@domicile/data/*": ["packages/data/src/*"],
+      "@domicile/observability/*": ["packages/observability/src/*"],
+      "@domicile/operations/*": ["packages/operations/src/*"]
+    }
+  },
+  "include": ["packages/*/src/**/*"],
+  "exclude": ["node_modules", "dist", "**/*.test.ts"]
+}

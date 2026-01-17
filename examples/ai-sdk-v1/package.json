@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "name": "ai-sdk-v1",
+  "dependencies": {
+    "@ai-sdk/openai": "1",
+    "@openai/agents": "workspace:*",
+    "@openai/agents-extensions": "workspace:*",
+    "zod": "3"
+  },
+  "scripts": {
+    "build-check": "tsc --noEmit",
+    "start": "tsx index.ts",
+    "start:stream": "tsx stream.ts"
+  }
+}

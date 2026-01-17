@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MetricDef Contract v1.0.0",
+  "description": "Schema for social media metric definitions",
+  "type": "object",
+  "properties": {
+    "platform": {
+      "type": "string",
+      "enum": ["twitter", "instagram", "tiktok", "facebook", "linkedin", "youtube", "threads", "pinterest"]
+    },
+    "name": {
+      "type": "string",
+      "description": "Machine-readable identifier"
+    },
+    "display_name": {
+      "type": "string",
+      "description": "Human-readable name"
+    },
+    "definition": {
+      "type": "string",
+      "description": "What the metric measures"
+    },
+    "formula": {
+      "type": ["string", "null"],
+      "description": "Mathematical formula if applicable"
+    },
+    "unit": {
+      "type": "string",
+      "enum": ["ratio", "percent", "count", "ms", "s"],
+      "description": "Unit of measurement"
+    },
+    "window": {
+      "type": ["string", "null"],
+      "description": "Time window for the metric"
+    },
+    "dimensions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": [],
+      "description": "Breakdown dimensions available"
+    },
+    "notes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": [],
+      "description": "Additional notes and caveats"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "url": { "type": ["string", "null"] },
+          "retrieved_at": { "type": "string", "format": "date-time" }
+        },
+        "required": ["id", "title", "retrieved_at"]
+      },
+      "minItems": 1,
+      "description": "Source citations"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version"
+    }
+  },
+  "required": ["platform", "name", "display_name", "definition", "unit", "sources", "updated_at", "version"],
+  "additionalProperties": false
+}

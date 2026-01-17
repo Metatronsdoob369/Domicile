@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TrendSignal Contract v1.0.0",
+  "description": "Schema for social media trend and viral content signals",
+  "type": "object",
+  "properties": {
+    "platform": {
+      "type": "string",
+      "enum": ["twitter", "instagram", "tiktok", "facebook", "linkedin", "youtube", "threads", "pinterest"]
+    },
+    "tag_or_sound": {
+      "type": "string",
+      "description": "Hashtag, sound identifier, or trend name"
+    },
+    "momentum_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Momentum score from 0-1 indicating growth rate"
+    },
+    "sample_posts": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Sample post IDs demonstrating the trend"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "url": { "type": ["string", "null"] },
+          "retrieved_at": { "type": "string", "format": "date-time" }
+        },
+        "required": ["id", "title", "retrieved_at"]
+      },
+      "minItems": 1,
+      "description": "Data source citations"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this trend signal was observed"
+    }
+  },
+  "required": ["platform", "tag_or_sound", "momentum_score", "sample_posts", "sources", "observed_at"],
+  "additionalProperties": false
+}

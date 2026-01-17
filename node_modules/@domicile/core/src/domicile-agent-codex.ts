@@ -1,0 +1,199 @@
+/**
+ * Domicile Agent Codex
+ * --------------------
+ * Declarative capability map for the core personas we orchestrate inside the Circadian loop.
+ * This file mirrors the spec used in the public documentation so TypeScript-aware tooling
+ * can reference the same units (Foundation, Monetization, Resilience, Observability).
+ */
+
+export type AgentAbility = {
+  /** Descriptive name used in prompts / manifests */
+  name: string;
+  /** One-line summary that can be fed to an LLM */
+  summary: string;
+  /** Domain-specific signature or expected effect */
+  effect: string;
+};
+
+export type AgentPersona = {
+  id: string;
+  focus: string;
+  abilities: AgentAbility[];
+};
+
+export type AgentUnit = {
+  unit: "Foundation" | "Monetization" | "Resilience" | "Observability";
+  personas: AgentPersona[];
+};
+
+export const DOMICILE_AGENT_CODEX: AgentUnit[] = [
+  {
+    unit: "Foundation",
+    personas: [
+      {
+        id: "WorkspaceArchitect",
+        focus: "Repository integrity and absolute path stewardship",
+        abilities: [
+          {
+            name: "resolveWorkspaceAliases",
+            summary: "Replace relative imports with @domicile/* aliases",
+            effect: "Stabilizes TypeScript compiler output after refactors",
+          },
+          {
+            name: "runtimeSchemaInjection",
+            summary: "Convert type exports to runtime z.object schemas",
+            effect: "Makes validation code testable and debuggable",
+          },
+          {
+            name: "verifyBuildEmission",
+            summary: "Assert dist/ contents match package.json + tsconfig",
+            effect: "Prevents broken publish artifacts across workspaces",
+          },
+        ],
+      },
+      {
+        id: "CoreRefactorBot",
+        focus: "Structural evolution of the monorepo",
+        abilities: [
+          {
+            name: "lockstepTsconfig",
+            summary: "Enforce consistent tsconfig inheritance",
+            effect: "Avoids path drift when packages evolve",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    unit: "Monetization",
+    personas: [
+      {
+        id: "TierOptimizer",
+        focus: "Transform PropertyIntelligence into sellable packages",
+        abilities: [
+          {
+            name: "generateROISignals",
+            summary: "Calculate distress + ROI projections (>=10%)",
+            effect: "Outputs lead quality tiers for downstream agents",
+          },
+          {
+            name: "applyDemandPricing",
+            summary: "Apply 1.5x multiplier for hot markets (Austin, Phoenix, ...)",
+            effect: "Aligns pricing with regional demand curves",
+          },
+        ],
+      },
+      {
+        id: "InvestorMatcher",
+        focus: "Route packages to the right investors",
+        abilities: [
+          {
+            name: "matchHighVelocityDeals",
+            summary: "Filter by market, price range, property type, and velocity",
+            effect: "Produces investor shortlists for exclusive releases",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    unit: "Resilience",
+    personas: [
+      {
+        id: "CircuitBreaker",
+        focus: "Pause unhealthy agents",
+        abilities: [
+          {
+            name: "enforceCircuitCooldown",
+            summary: "Trip circuit after repeated failures (3x) for 5 minutes",
+            effect: "Prevents cascading crashes across the graph",
+          },
+        ],
+      },
+      {
+        id: "EscalationAgent",
+        focus: "Quarantine compromised units",
+        abilities: [
+          {
+            name: "escalateToQuarantine",
+            summary: "Strip autonomy when resilience index < 80",
+            effect: "Requires manual review before resuming tasks",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    unit: "Observability",
+    personas: [
+      {
+        id: "TelemetryBuilder",
+        focus: "Emit structured logs + metrics",
+        abilities: [
+          {
+            name: "emitLiveTelemetry",
+            summary: "Stream SSE events with contextual payloads",
+            effect: "Feeds dashboards for live monitoring",
+          },
+          {
+            name: "computeHealthScore",
+            summary: "Normalize uptime/failure counts into 0-100 score",
+            effect: "Enables resilience gating and reporting",
+          },
+        ],
+      },
+      {
+        id: "PredictiveTrendsAgent",
+        focus: "Forecast degradation",
+        abilities: [
+          {
+            name: "predictStabilityRegression",
+            summary: "Use rolling averages to forecast rollback risk",
+            effect: "Flags agents likely to require intervention",
+          },
+        ],
+      },
+    ],
+  },
+];
+
+export type CapabilityRef = {
+  unit: AgentUnit["unit"];
+  persona: string;
+  ability: string;
+};
+
+/**
+ * Maps enhancement areas to the Monetization personas so manifests can reference
+ * the CODEx when they rely on ROI/lead packaging logic.
+ */
+export function inferCapabilitiesFromEnhancement(input: {
+  enhancement_area: string;
+  objective: string;
+}): CapabilityRef[] {
+  const text = `${input.enhancement_area} ${input.objective}`.toLowerCase();
+  const capabilities: CapabilityRef[] = [];
+
+  if (text.includes("lead") || text.includes("monetization") || text.includes("marketplace")) {
+    capabilities.push({
+      unit: "Monetization",
+      persona: "TierOptimizer",
+      ability: "generateROISignals",
+    });
+    capabilities.push({
+      unit: "Monetization",
+      persona: "InvestorMatcher",
+      ability: "matchHighVelocityDeals",
+    });
+  }
+
+  if (text.includes("refactor") || text.includes("path") || text.includes("workspace")) {
+    capabilities.push({
+      unit: "Foundation",
+      persona: "WorkspaceArchitect",
+      ability: "resolveWorkspaceAliases",
+    });
+  }
+
+  return capabilities;
+}

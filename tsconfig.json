@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "commonjs",
+    "outDir": "dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": false,
+    "baseUrl": ".",
+    "paths": {
+      "@domicile/core/*": ["domicile/packages/core/src/*"],
+      "@domicile/data/*": ["domicile/packages/data/src/*"],
+      "@domicile/interface/*": ["domicile/packages/interface/src/*"],
+      "@domicile/observability/*": ["domicile/packages/observability/src/*"],
+      "@domicile/covenant/*": ["domicile/packages/covenant/src/*"]
+    },
+    "jsx": "react-jsx"
+  },
+  "include": [
+    "domicile/packages/*/src/**/*",
+    "examples/**/*",
+    "*.ts",
+    "*.tsx"
+  ],
+  "exclude": [
+    "domicile/packages/*/dist/**/*"
+  ]
+}

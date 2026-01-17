@@ -1,0 +1,17 @@
+{
+  "name": "@domicile/observability",
+  "version": "0.1.0",
+  "description": "Monitoring dashboard and performance optimizer for Domicile",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "rm -rf dist",
+    "dashboard": "ts-node src/monitoring-dashboard.ts",
+    "optimizer": "ts-node src/performance-optimizer.ts"
+  }
+}

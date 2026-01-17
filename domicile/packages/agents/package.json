@@ -1,0 +1,25 @@
+{
+  "name": "@domicile/agents",
+  "version": "0.1.0",
+  "description": "Domain agents for the Domicile contract-driven AI platform",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@domicile/core": "workspace:*",
+    "@domicile/contracts": "workspace:*",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.23",
+    "typescript": "^5.9.3",
+    "vitest": "^2.0.5"
+  }
+}

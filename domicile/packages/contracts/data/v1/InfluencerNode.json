@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "InfluencerNode Contract v1.0.0",
+  "description": "Schema for social media influencer profiles and metrics",
+  "type": "object",
+  "properties": {
+    "platform": {
+      "type": "string",
+      "enum": ["twitter", "instagram", "tiktok", "facebook", "linkedin", "youtube", "threads", "pinterest"]
+    },
+    "handle": {
+      "type": "string",
+      "description": "Platform-specific username/handle"
+    },
+    "follower_count": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Current follower/following count"
+    },
+    "categories": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Content categories (fitness, tech, lifestyle, etc.)"
+    },
+    "credibility_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Credibility score based on engagement authenticity"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "url": { "type": ["string", "null"] },
+          "retrieved_at": { "type": "string", "format": "date-time" }
+        },
+        "required": ["id", "title", "retrieved_at"]
+      },
+      "minItems": 1,
+      "description": "Data source citations"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last profile update timestamp"
+    }
+  },
+  "required": ["platform", "handle", "follower_count", "categories", "credibility_score", "sources", "updated_at"],
+  "additionalProperties": false
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ComplianceRule Contract v1.0.0",
+  "description": "Schema for platform compliance and regulatory requirements",
+  "type": "object",
+  "properties": {
+    "platform": {
+      "type": "string",
+      "enum": ["twitter", "instagram", "tiktok", "facebook", "linkedin", "youtube", "threads", "pinterest", "global"]
+    },
+    "rule_id": {
+      "type": "string",
+      "description": "Unique identifier for the compliance rule"
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable description of the requirement"
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["low", "medium", "high", "critical"],
+      "description": "Severity level of non-compliance"
+    },
+    "guidance": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Specific implementation guidance"
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string" },
+          "url": { "type": ["string", "null"] },
+          "retrieved_at": { "type": "string", "format": "date-time" }
+        },
+        "required": ["id", "title", "retrieved_at"]
+      },
+      "minItems": 1,
+      "description": "Legal references and source documents"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version"
+    }
+  },
+  "required": ["platform", "rule_id", "description", "severity", "guidance", "references", "updated_at", "version"],
+  "additionalProperties": false
+}

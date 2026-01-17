@@ -1,0 +1,92 @@
+{
+  "name": "@contract-ai-platform/core",
+  "version": "0.9.0",
+  "description": "Contract-Driven AI Platform - Treat agents like APIs with contracts, governance, and trust scores",
+  "keywords": [
+    "ai",
+    "agents",
+    "orchestration",
+    "contracts",
+    "governance",
+    "typescript"
+  ],
+  "author": "Contract-Driven AI Platform",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/contract-ai-platform/core.git"
+  },
+  "bugs": {
+    "url": "https://github.com/contract-ai-platform/core/issues"
+  },
+  "homepage": "https://github.com/contract-ai-platform/core#readme",
+  "workspaces": [
+    "domicile/packages/*"
+  ],
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "examples",
+    "docs"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w @domicile/interface",
+    "start": "npm run start -w @domicile/interface",
+    "build": "npm run build:packages",
+    "workspaces:build": "npm run build:packages",
+    "build:packages": "npm run build -w @domicile/data && npm run build -w @domicile/agents && npm run build -w @domicile/covenant && npm run build -w @domicile/observability && npm run build -w @domicile/interface && npm run build -w @domicile/core",
+    "clean": "npm run workspaces:clean",
+    "workspaces:clean": "npm run clean --workspaces --if-present",
+    "lint": "eslint domicile/packages/**/*.ts examples/**/*.ts",
+    "lint:fix": "eslint domicile/packages/**/*.ts examples/**/*.ts --fix",
+    "type-check": "npm run workspaces:build -- --noEmit",
+    "dashboard": "npm run dashboard -w @domicile/observability",
+    "mcp:dev": "npm run mcp:dev -w @domicile/interface",
+    "mcp:build": "npm run mcp:build -w @domicile/interface",
+    "mcp:start": "npm run mcp:start -w @domicile/interface",
+    "demo:real-estate": "node scripts/demo-real-estate.mjs",
+    "knowledge:build-trainpack": "npm run build-trainpack -w @domicile/data",
+    "knowledge:health-check": "npm run health-check -w @domicile/data",
+    "orchestrator": "npm run cli -w @domicile/core",
+    "orchestrator:compile": "npm run cli -w @domicile/core -- compile",
+    "orchestrator:validate": "npm run cli -w @domicile/core -- validate",
+    "orchestrator:execute": "npm run cli -w @domicile/core -- execute",
+    "orchestrator:examples": "npm run cli -w @domicile/core -- examples",
+    "orchestrator:test": "npm run cli -w @domicile/core -- test",
+    "orchestrator:status": "npm run cli -w @domicile/core -- status",
+    "test:orchestrator": "npm run test -w @domicile/core",
+    "test": "vitest",
+    "docs:dev": "cd docs && npm run dev",
+    "docs:build": "cd docs && npm run build",
+    "examples": "echo 'Use workspace scripts or run files inside examples directly.'",
+    "prepublishOnly": "npm run clean && npm run build && npm test"
+  },
+  "dependencies": {
+    "@pinecone-database/pinecone": "^6.1.2",
+    "clsx": "^2.1.1",
+    "commander": "^12.1.0",
+    "express": "^4.19.2",
+    "fastify": "^4.28.1",
+    "js-yaml": "^4.1.1",
+    "ky": "^1.7.2",
+    "lucide-react": "^0.515.0",
+    "openai": "^6.7.0",
+    "openai-agents": "^1.1.0",
+    "react": "^18.2.0",
+    "tailwind-merge": "^2.5.2",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^20.19.23",
+    "@types/react": "^18.2.79",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
+    "vitest": "^2.0.5"
+  },
+  "overrides": {
+    "esbuild": "0.25.0"
+  }
+}

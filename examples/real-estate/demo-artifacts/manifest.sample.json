@@ -1,0 +1,40 @@
+{
+  "metadata": {
+    "version": "2.1.0",
+    "created_at": "2024-12-20T12:00:00Z",
+    "last_modified": "2024-12-20T12:00:00Z",
+    "commit_hash": "demo-manifest",
+    "author": "demo",
+    "environment": "development",
+    "total_enhancements": 1,
+    "build_order": ["overflow-lead-pipeline"]
+  },
+  "enhancements": [
+    {
+      "enhancement_area": "Overflow Lead Monetization",
+      "objective": "Take distressed listings from the Zillow agent and convert them into sellable investor packages via Secondary Eve.",
+      "implementation_plan": {
+        "modules": [
+          "examples.real-estate.zillow_visual_scraper",
+          "examples.real-estate.secondary_market_eve"
+        ],
+        "architecture": "FastAPI microservices orchestrated via MCP",
+        "estimated_effort": "2 days"
+      },
+      "depends_on": [],
+      "sources": ["REAL_ESTATE_ZILLOW_URL", "REAL_ESTATE_SECONDARY_URL"],
+      "governance": {
+        "security": "Bearer tokens on MCP server",
+        "compliance": "Local demo only",
+        "ethics": "Lead sellers notified"
+      },
+      "validation_criteria": "Manifest output spawns scrape+package cycle",
+      "confidence_score": 0.86
+    }
+  ],
+  "roadmap": {
+    "nodes": ["overflow-lead-pipeline"],
+    "edges": [],
+    "build_order": ["overflow-lead-pipeline"]
+  }
+}
