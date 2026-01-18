@@ -10,6 +10,7 @@ Domicile eliminates the prompt era. Contracts > Prompts. The system learns while
 ## 🚀 Start Here
 
 **New to Domicile?** Read these in order:
+
 1. **[VISION.md](./VISION.md)** - What Domicile is and why it exists
 2. **[QUICK_START.md](./QUICK_START.md)** - Get running in 5 minutes
 3. **[SESSION_START.md](./SESSION_START.md)** - Agent session template
@@ -18,16 +19,19 @@ Domicile eliminates the prompt era. Contracts > Prompts. The system learns while
 ## 🧠 Core Concept
 
 Domicile is the platform where:
+
 - **Humans contribute:** Architecture, contracts, governance rules
 - **AI contributes:** Execution within contracts, learning from outcomes
 - **System ensures:** Neither party fails the other
 
 ### The Problem with Prompts
+
 1. Humans can't perfectly articulate intent in natural language
 2. LLMs over-interpret or misinterpret instructions
 3. **Neither party can trust the outcome**
 
 ### The Domicile Solution
+
 Every interaction is a **contract** (typed Zod schema), not a prompt. The **policy engine** governs execution. The **Circadian loop** learns overnight from decisions vs. outcomes.
 
 ## 🗂 Monorepo Layout
@@ -59,6 +63,7 @@ pnpm test                     # run Vitest
 ### Environment Variables
 
 Copy `.env.example` and configure:
+
 ```bash
 cp .env.example .env
 # Edit .env with your API keys
@@ -78,14 +83,45 @@ pnpm run mcp:start -w @domicile/interface
 pnpm run demo:real-estate
 ```
 
+### Domicile CLI (New!)
+
+The `domicile` CLI provides contract-driven execution at the command line:
+
+```bash
+# Configure MOS connection (one-time setup)
+cp .env.example .env
+# Edit .env - add SUPABASE_URL and SUPABASE_ANON_KEY
+
+# Check status
+pnpm domicile status
+
+# Test MOS connectivity
+pnpm domicile test
+
+# Execute natural language intents
+pnpm domicile "optimize my social media posting schedule"
+pnpm domicile "analyze real estate market trends in Austin"
+
+# List available systems
+pnpm domicile systems
+
+# Show routing plan without executing
+pnpm domicile --dry-run "generate financial report for Q4 2025"
+
+# Set budget constraint
+pnpm domicile --budget 2.0 "comprehensive market analysis"
+```
+
+The CLI connects to the deployed MOS on Supabase, routes your intent through constitutional routing, and executes contracts with governance.
+
 ## 🔐 Why Contracts > Prompts
 
-| Traditional Prompting | Domicile |
-| --- | --- |
-| Fragile text instructions | Typed contracts validated with Zod |
-| Agent self-preference | Covenant trust scores + policy barriers |
-| Manual auditing | Ledger + observability dashboard |
-| Static systems | Circadian loop proposes improvements off-hours |
+| Traditional Prompting     | Domicile                                       |
+| ------------------------- | ---------------------------------------------- |
+| Fragile text instructions | Typed contracts validated with Zod             |
+| Agent self-preference     | Covenant trust scores + policy barriers        |
+| Manual auditing           | Ledger + observability dashboard               |
+| Static systems            | Circadian loop proposes improvements off-hours |
 
 ## 🧩 Foundation Highlights
 
@@ -97,6 +133,7 @@ pnpm run demo:real-estate
 ## 🏛️ Master Orchestration System (MOS)
 
 The autonomous engine is **deployed and running** on Supabase:
+
 - **Production URL:** `https://rnarigclezfhlzrqueiq.supabase.co`
 - **Architecture:** Fractal switchboard routing requests across products (DispoAI, CA-CAO, TARS)
 - **Learning:** Dream cycles review executions vs. outcomes at 3 AM
@@ -126,6 +163,7 @@ CI=1 pnpm test                              # CI-friendly vitest run
 ## 🌅 Vision
 
 Domicile is the collaboration surface where:
+
 - Software understands what you mean the first time because contracts encode it
 - Every failed attempt becomes a training signal the system reflects on overnight
 - Agents evolve safely because Covenant refuses to ship anything with resilience score < 80
@@ -146,4 +184,4 @@ See [`SECURITY.md`](./SECURITY.md) for vulnerability reporting.
 
 ---
 
-*"The platform that dreams about its decisions vs. outcomes, learning to understand you better while you sleep."*
+_"The platform that dreams about its decisions vs. outcomes, learning to understand you better while you sleep."_
