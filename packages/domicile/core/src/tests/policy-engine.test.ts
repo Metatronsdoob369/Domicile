@@ -7,8 +7,8 @@ describe('PolicyEngine', () => {
   it('routes to HUMAN when domain is sensitive and no compliance', () => {
     const input = {
       domainResult: { domain: 'healthcare', confidence: 0.9 },
-      agents:,
-      phase1: { analysis: { nonFunctional: {} } }
+      agents: [],
+      phase1: { analysis: { nonFunctional: {} } },
     } as any;
     const decision = PolicyEngine.decide(input);
     expect(decision.route).toBe('HUMAN');
@@ -17,8 +17,16 @@ describe('PolicyEngine', () => {
   it('routes to AGENT when trustScore >= threshold', () => {
     const input = {
       domainResult: { domain: 'social-media', confidence: 0.9 },
-      agents:,
-      phase1: { analysis: { nonFunctional: {} } }
+      agents: [
+        {
+          agentId: 'qsv2',
+          domains: ['social-media'],
+          capabilities: ['posting'],
+          version: '1.0.0',
+          trustScore: 0.85,
+        } as AgentMeta,
+      ],
+      phase1: { analysis: { nonFunctional: {} } },
     } as any;
     const decision = PolicyEngine.decide(input);
     expect(decision.route).toBe('AGENT');
@@ -28,8 +36,16 @@ describe('PolicyEngine', () => {
   it('falls back to LLM when top agent trust below threshold', () => {
     const input = {
       domainResult: { domain: 'social-media', confidence: 0.9 },
-      agents:,
-      phase1: {}
+      agents: [
+        {
+          agentId: 'low-trust',
+          domains: ['social-media'],
+          capabilities: ['posting'],
+          version: '1.0.0',
+          trustScore: 0.3,
+        } as AgentMeta,
+      ],
+      phase1: {},
     } as any;
     const decision = PolicyEngine.decide(input);
     expect(decision.route).toBe('LLM');
