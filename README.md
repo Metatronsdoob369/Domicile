@@ -16,6 +16,17 @@ Domicile demotes prompts beneath contracts, jurisdiction, and governed execution
 3. **[SESSION_START.md](./SESSION_START.md)** - Agent session template
 4. **[ARCHITECTURE.md](./ARCHITECTURE.md)** - Full technical architecture
 
+## ⚖️ Governance (Where Law Lives)
+
+All governance documents are in **`governance/`** — these are non-negotiable invariants, not suggestions:
+
+- **[governance/DOMICILE_MIRROR.md](./governance/DOMICILE_MIRROR.md)** - Core Domicile invariants (SAFE, Context, Awareness, Exit)
+- **[governance/MCP_ADMISSION_CONTRACT.md](./governance/MCP_ADMISSION_CONTRACT.md)** - MCP server admission requirements
+- **[governance/OPEN_NOTEBOOK_MCP_AFFORDANCES.md](./governance/OPEN_NOTEBOOK_MCP_AFFORDANCES.md)** - Open Notebook world affordances (exactly 11)
+- **[governance/OPEN_NOTEBOOK_MCP_DESIGN.md](./governance/OPEN_NOTEBOOK_MCP_DESIGN.md)** - Open Notebook implementation specification
+
+These files define what Domicile **is**, not what it aspires to be. They are normative, enforceable, and verifiable.
+
 ## 🧠 Core Concept
 
 Domicile is the platform where:
@@ -42,19 +53,19 @@ All execution occurs inside **admitted jurisdictions**—external worlds
 that satisfy Domicile’s admission contracts.
 
 Currently supported:
+
 - **MCP-admitted worlds** (Model Context Protocol)
 
-MCP binds contracts to *current reality* by:
+MCP binds contracts to _current reality_ by:
+
 - enumerating available actions at session start
 - exposing inspectable world state
 - preventing implicit or invented execution paths
 
 If something cannot be done, it is because it does not exist
-in the current world—not because the system “said no.”
+in the current world—not because the system "said no."
 
-See [`MCP_ADMISSION_CONTRACT.md`](./MCP_ADMISSION_CONTRACT.md).
-
-
+See [governance/MCP_ADMISSION_CONTRACT.md](./governance/MCP_ADMISSION_CONTRACT.md).
 
 ## 🗂 Monorepo Layout
 
@@ -111,7 +122,6 @@ The `domicile` CLI provides contract-driven execution at the command line:
 
 If a command cannot execute, Domicile will explain
 what has changed since your last session and why.
-
 
 ```bash
 # Configure MOS connection (one-time setup)

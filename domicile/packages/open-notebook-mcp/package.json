@@ -1,0 +1,26 @@
+{
+  "name": "@domicile/open-notebook-mcp",
+  "version": "0.1.0",
+  "description": "Open Notebook MCP Server - Read-only knowledge jurisdiction governed by Domicile invariants",
+  "private": true,
+  "type": "module",
+  "main": "dist/server.js",
+  "types": "dist/server.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "clean": "rm -rf dist",
+    "dev": "tsx src/server.ts",
+    "start": "node dist/server.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.16.3",
+    "tsx": "^4.20.5",
+    "typescript": "^5.8.3"
+  }
+}

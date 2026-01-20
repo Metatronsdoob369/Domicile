@@ -7,13 +7,15 @@
    - [What are Contracts?](#what-are-contracts)
    - [Why Contracts > Prompts](#why-contracts--prompts)
    - [Contract Lifecycle](#contract-lifecycle)
-3.   [System Architecture](#DOMICILE)
-   - [Layer 1: Interface Layer](#layer-1-interface-layer)
-   - [Layer 2: Orchestration Layer](#layer-2-orchestration-layer)
-   - [Layer 3: Execution Layer](#layer-3-execution-layer)
-   - [Layer 4: Data & Knowledge Layer](#layer-4-data--knowledge-layer)
-   - [Layer 5: Observability Layer](#layer-5-observability-layer)
-   - [Layer 6: Operations Layer](#layer-6-operations-layer)
+3. [System Architecture](#DOMICILE)
+
+- [Layer 1: Interface Layer](#layer-1-interface-layer)
+- [Layer 2: Orchestration Layer](#layer-2-orchestration-layer)
+- [Layer 3: Execution Layer](#layer-3-execution-layer)
+- [Layer 4: Data & Knowledge Layer](#layer-4-data--knowledge-layer)
+- [Layer 5: Observability Layer](#layer-5-observability-layer)
+- [Layer 6: Operations Layer](#layer-6-operations-layer)
+
 4. [Key Components](#key-components)
    - [Policy Engine](#policy-engine)
    - [Domain Classifier](#domain-classifier)
@@ -66,12 +68,13 @@ Current AI orchestration platforms suffer from several critical limitations:
 
 ### The Contract-Driven Solution
 
-This platform introduces a revolutionary approach:                        .  
+This platform introduces a revolutionary approach: .
+
 - **Structured Contracts**: Every agent interaction is defined by a typed, validated contract
 - **Policy Governance**: Independent policy engine ensures all actions comply with rules
 - **Trust-Based Selection**: Agents are selected based on proven performance metrics
-   **The CIRCADIAN PHILOSOPHY**
-- **Self-Evolving System**: The platform can propose and approve its own improvements, off peak hours. It doesnt sleep....it dreams, about its desisions vs. out comes 
+  **The CIRCADIAN PHILOSOPHY**
+- **Self-Evolving System**: The platform can propose and approve its own improvements, off peak hours. It doesnt sleep....it dreams, about its desisions vs. out comes
 
 - **Enterprise-Grade Observability**: Complete audit trails and real-time monitoring
 
@@ -87,23 +90,26 @@ Contracts in this platform are structured, typed definitions that specify:
 
 ```typescript
 interface AgentContract {
-  enhancement_area: string;           // What the agent should accomplish
-  objective: string;                  // Detailed description of goals
-  implementation_plan: {              // How it will be built
+  enhancement_area: string; // What the agent should accomplish
+  objective: string; // Detailed description of goals
+  implementation_plan: {
+    // How it will be built
     modules: string[];
     architecture: string;
   };
-  governance: {                       // Safety and compliance rules
+  governance: {
+    // Safety and compliance rules
     security: string;
     compliance: string;
     ethics: string;
   };
-  validation_criteria: string;        // How to measure success
-  confidence_score: number;           // Agent's confidence in the contract
+  validation_criteria: string; // How to measure success
+  confidence_score: number; // Agent's confidence in the contract
 }
 ```
 
 Unlike prompts, contracts are:
+
 - **Machine-readable**: Can be validated, parsed, and processed automatically
 - **Versioned**: Changes are tracked and can be rolled back
 - **Composable**: Contracts can reference and depend on other contracts
@@ -111,14 +117,14 @@ Unlike prompts, contracts are:
 
 ### Why Contracts > Prompts
 
-| Aspect | Traditional Prompts | Contract-Driven |
-|--------|-------------------|-----------------|
-| **Reliability** | Variable, context-dependent | Deterministic, validated |
-| **Governance** | Manual oversight required | Automated policy enforcement |
-| **Composition** | Difficult to combine | Dependency graphs, orchestration |
-| **Debugging** | Black box, hard to trace | Full audit trails, structured logs |
-| **Scaling** | Manual integration per agent | Pluggable architecture, auto-discovery |
-| **Trust** | Based on reputation | Based on measured performance metrics |
+| Aspect          | Traditional Prompts          | Contract-Driven                        |
+| --------------- | ---------------------------- | -------------------------------------- |
+| **Reliability** | Variable, context-dependent  | Deterministic, validated               |
+| **Governance**  | Manual oversight required    | Automated policy enforcement           |
+| **Composition** | Difficult to combine         | Dependency graphs, orchestration       |
+| **Debugging**   | Black box, hard to trace     | Full audit trails, structured logs     |
+| **Scaling**     | Manual integration per agent | Pluggable architecture, auto-discovery |
+| **Trust**       | Based on reputation          | Based on measured performance metrics  |
 
 ### Contract Lifecycle
 
@@ -141,6 +147,7 @@ For a narrative view of how those layers align with the agent divisions and Circ
 The interface layer provides multiple ways for users and systems to interact with the platform.
 
 **Components:**
+
 - **YAML Enhancement Areas**: Declarative specifications of requirements
 - **Builder Agent**: Converts natural language to structured contracts
 - **Financial Research Manager**: Domain-specific workflow orchestration
@@ -149,13 +156,13 @@ The interface layer provides multiple ways for users and systems to interact wit
 
 ```yaml
 # Example enhancement area specification
-name: "Audience Segmentation Depth"
-objective: "Multi-dimensional segmentation including psychographics and geo-location"
+name: 'Audience Segmentation Depth'
+objective: 'Multi-dimensional segmentation including psychographics and geo-location'
 key_requirements:
-  - "Implement psychographic segmentation"
-  - "Add geo-location targeting"
-  - "Create multi-dimensional profiles"
-sources: ["3"]
+  - 'Implement psychographic segmentation'
+  - 'Add geo-location targeting'
+  - 'Create multi-dimensional profiles'
+sources: ['3']
 depends_on: []
 ```
 
@@ -164,6 +171,7 @@ depends_on: []
 The orchestration layer is the heart of the platform, managing the complex interactions between agents, policies, and execution.
 
 **Components:**
+
 - **Policy Engine**: Authoritative governance, prevents agent gaming
 - **Domain Classifier**: Hybrid rules + LLM, 70% confidence threshold
 - **Agent Registry**: Trust scores (0.85-0.95), performance metrics tracking
@@ -177,6 +185,7 @@ The orchestration layer is the heart of the platform, managing the complex inter
 The execution layer contains the domain-specific agents that actually perform the work.
 
 **Domain Agents:**
+
 - **Social Media Agent**: Content strategy, engagement optimization, audience analysis
 - **Financial Research Agent**: Multi-agent workflow (plan → search → write → verify)
 - **Meta-Framework Agent**: Self-evolution with safety gates
@@ -188,6 +197,7 @@ The execution layer contains the domain-specific agents that actually perform th
 The data layer provides persistent storage, semantic search, and knowledge management.
 
 **Components:**
+
 - **Pinecone**: Contract registry with semantic search, duplicate detection, dependency conflict checking
 - **TrainPack Builder**: Generates QA pairs with citations for fine-tuning
 - **Knowledge Base**: Citation-tracked sources
@@ -200,6 +210,7 @@ The data layer provides persistent storage, semantic search, and knowledge manag
 Complete visibility into system behavior and performance.
 
 **Components:**
+
 - **Monitoring Dashboard**: Real-time metrics and health checks
 - **Audit Logger**: Complete traceability of all decisions
 - **Performance Benchmarks**: Regression detection and optimization
@@ -212,6 +223,7 @@ Complete visibility into system behavior and performance.
 Production-grade operations and deployment capabilities.
 
 **Components:**
+
 - **CI/CD Pipeline**: Multi-stage, security scanning, automated deployment
 - **Test Suite**: ~20 tests covering all layers
 - **Runbooks**: Schema validation failures, Pinecone drift, license violations
@@ -243,10 +255,12 @@ const policies = {
         policy: 'agent_preference',
         result: 'fail',
         details: 'Agents cannot declare themselves preferred',
-        severity: 'high'
+        severity: 'high',
       };
     }
-    return { /* pass */ };
+    return {
+      /* pass */
+    };
   },
 
   domain_boundary: (context) => {
@@ -255,7 +269,7 @@ const policies = {
 
   capability_match: (context) => {
     // Verify agent has required capabilities
-  }
+  },
 };
 ```
 
@@ -279,6 +293,7 @@ graph TD
 ```
 
 **Domains Supported:**
+
 - Social Media
 - Healthcare
 - Finance
@@ -295,7 +310,7 @@ The agent registry maintains a catalog of available agents with their capabiliti
 interface AgentCapability {
   domain: string;
   capabilities: string[];
-  trustScore: number;  // 0.0 - 1.0
+  trustScore: number; // 0.0 - 1.0
   performanceMetrics: {
     accuracy: number;
     reliability: number;
@@ -311,6 +326,7 @@ interface AgentCapability {
 ```
 
 **Trust Score Calculation:**
+
 - Accuracy: Contract success rate
 - Reliability: Uptime and error rates
 - Speed: Response time percentiles
@@ -334,6 +350,7 @@ The main orchestrator coordinates the entire contract-driven workflow, from init
 Real-time visibility into system health and performance.
 
 **Key Metrics:**
+
 - Contract success rates
 - Agent performance by domain
 - Policy violation rates
@@ -347,6 +364,7 @@ Real-time visibility into system health and performance.
 Specialized for social media content creation, optimization, and analysis.
 
 **Capabilities:**
+
 - Content strategy development
 - Engagement optimization algorithms
 - Audience segmentation and targeting
@@ -378,6 +396,7 @@ Specialized for social media content creation, optimization, and analysis.
 Handles complex financial research workflows with multiple specialized agents.
 
 **Workflow:**
+
 1. **Planning Agent**: Creates research strategy
 2. **Search Agent**: Gathers data from multiple sources
 3. **Analysis Agent**: Processes and synthesizes information
@@ -393,8 +412,8 @@ const financialWorkflow = {
     { from: 'planner', to: 'searcher' },
     { from: 'searcher', to: 'analyzer' },
     { from: 'analyzer', to: 'writer' },
-    { from: 'writer', to: 'verifier' }
-  ]
+    { from: 'writer', to: 'verifier' },
+  ],
 };
 ```
 
@@ -414,6 +433,7 @@ interface DomainAgent {
 ```
 
 **Registration Process:**
+
 1. Implement the DomainAgent interface
 2. Register with AgentRegistry
 3. Provide capability declarations
@@ -465,15 +485,15 @@ const AgentContractSchema = z.object({
   objective: z.string().min(1),
   implementation_plan: z.object({
     modules: z.array(z.string()),
-    architecture: z.string()
+    architecture: z.string(),
   }),
   governance: z.object({
     security: z.string(),
     compliance: z.string(),
-    ethics: z.string()
+    ethics: z.string(),
   }),
   validation_criteria: z.string(),
-  confidence_score: z.number().min(0).max(1)
+  confidence_score: z.number().min(0).max(1),
 });
 ```
 
@@ -520,6 +540,7 @@ Comprehensive error handling with fallback strategies:
 ### Monitoring
 
 Real-time dashboards showing:
+
 - System health and uptime
 - Contract success rates by domain
 - Agent performance metrics
@@ -546,6 +567,7 @@ interface AuditEntry {
 ### Performance Metrics
 
 Detailed performance tracking:
+
 - Response times by agent and domain
 - Token usage and cost analysis
 - Success rates and error patterns
@@ -588,6 +610,7 @@ Common issues and solutions:
 **Problem**: Without governance, agents could manipulate the system to favor themselves or behave inappropriately.
 
 **Solution**: Independent policy engine that:
+
 - Validates all routing decisions
 - Prevents agent self-preference declarations
 - Ensures domain boundary compliance
@@ -600,6 +623,7 @@ Common issues and solutions:
 **Problem**: Pure LLM classification is expensive and can be inconsistent. Pure rules are brittle.
 
 **Solution**: Hybrid approach:
+
 - Fast rule-based classification for common cases
 - LLM validation only when confidence is low
 - Continuous learning from classification outcomes
@@ -611,6 +635,7 @@ Common issues and solutions:
 **Problem**: Traditional databases can't handle semantic search of complex contract relationships.
 
 **Solution**: Vector database for:
+
 - Semantic contract search
 - Duplicate detection
 - Dependency relationship storage
@@ -623,6 +648,7 @@ Common issues and solutions:
 **Problem**: JSON is verbose for configuration. Code is not declarative.
 
 **Solution**: YAML for:
+
 - Human-readable configuration
 - Declarative requirement specification
 - Easy version control and diffing
@@ -634,17 +660,20 @@ Common issues and solutions:
 
 ### Planned Enhancements
 
-**Q1 2025:**
+**Q1 2026:**
+
 - Healthcare agent with HIPAA compliance
 - Multi-language support for contracts
 - Advanced dependency conflict resolution
 
-**Q2 2025:**
+**Q2 2026:**
+
 - Enterprise SSO integration
 - Custom policy engine rules
 - Real-time collaboration features
 
-**Q3 2025:**
+**Q3 2026:**
+
 - Quantum computing integration
 - Advanced self-evolution capabilities
 - Marketplace for third-party agents
