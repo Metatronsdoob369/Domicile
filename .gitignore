@@ -148,4 +148,6 @@ openai-agents-python
 bundled/
 
 .wrangler/
-.dev.vars
+.dev.varsnode_modules/
+node_modules/
+**/node_modules/
