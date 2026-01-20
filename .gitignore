@@ -153,3 +153,6 @@ bundled/
 # Dependencies (consolidated)
 node_modules/
 **/node_modules/
+
+# Browser "Save Page As (Webpage, Complete)" exports
+*_files/
