@@ -45,12 +45,18 @@ Domicile is the platform where:
 
 Every interaction is a **contract** (typed Zod schema), not a prompt. The **policy engine** governs execution. The **Circadian loop** learns overnight from decisions vs. outcomes.
 
+## 🧠 Operating Narrative
+
+- **Agent Ecosystem Loop:** `domicile/docs/agent-ecosystem.ts` explains how the monorepo maps to Foundation, Monetization, Resilience, and Observability divisions.
+- **Semantic Refiner:** `domicile/docs/ecosystem-semantic-refiner.ts` defines the `IntentManifest`, metabolic states, and Circadian pulses that the MCP/CLI pass around.
+- **Agent Codex:** `docs/concepts/agent-codex.md` lists every UPS (Unit‑Per‑Skill) persona with the rules that keep them in sync.
+
 ## 🌍 Jurisdiction & Reality Binding
 
 Domicile does not execute actions directly.
 
 All execution occurs inside **admitted jurisdictions**—external worlds
-that satisfy Domicile’s admission contracts.
+that satisfy Domicile's admission contracts.
 
 Currently supported:
 
@@ -183,9 +189,11 @@ See `AUTONOMOUS_ENGINE_MAP.md` for integration details.
 - [`ARCHITECTURE.md`](./ARCHITECTURE.md) — Full six-layer blueprint
 - [`SESSION_START.md`](./SESSION_START.md) — Template for agent sessions
 - [`CIRCADIAN_LOG.md`](./CIRCADIAN_LOG.md) — Learning reflections
+- [`AGENTS.md`](./AGENTS.md) — Agent definitions and roles
 - [`docs/concepts/agent-codex.md`](./docs/concepts/agent-codex.md) — UPS personas + governance
 - [`domicile/CIRCADIAN_PHILOSOPHY.md`](./domicile/CIRCADIAN_PHILOSOPHY.md) — Learning model
 - [`domicile/docs/agent-ecosystem.ts`](./domicile/docs/agent-ecosystem.ts) — Narrative + semantic payloads
+- [`domicile/docs/ecosystem-semantic-refiner.ts`](./domicile/docs/ecosystem-semantic-refiner.ts) — Intent manifests and metabolic states
 
 ## 🧪 Development Scripts
 
