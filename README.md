@@ -5,7 +5,7 @@
 
 **Status:** Production Phase • **Architecture:** Fractal switchboard (MOS) with 6-layer contract stack
 
-Domicile eliminates the prompt era. Contracts > Prompts. The system learns while you sleep.
+Domicile demotes prompts beneath contracts, jurisdiction, and governed execution. Contracts > Prompts. The system learns while you sleep.
 
 ## 🚀 Start Here
 
@@ -33,6 +33,28 @@ Domicile is the platform where:
 ### The Domicile Solution
 
 Every interaction is a **contract** (typed Zod schema), not a prompt. The **policy engine** governs execution. The **Circadian loop** learns overnight from decisions vs. outcomes.
+
+## 🌍 Jurisdiction & Reality Binding
+
+Domicile does not execute actions directly.
+
+All execution occurs inside **admitted jurisdictions**—external worlds
+that satisfy Domicile’s admission contracts.
+
+Currently supported:
+- **MCP-admitted worlds** (Model Context Protocol)
+
+MCP binds contracts to *current reality* by:
+- enumerating available actions at session start
+- exposing inspectable world state
+- preventing implicit or invented execution paths
+
+If something cannot be done, it is because it does not exist
+in the current world—not because the system “said no.”
+
+See [`MCP_ADMISSION_CONTRACT.md`](./MCP_ADMISSION_CONTRACT.md).
+
+
 
 ## 🗂 Monorepo Layout
 
@@ -86,6 +108,10 @@ pnpm run demo:real-estate
 ### Domicile CLI (New!)
 
 The `domicile` CLI provides contract-driven execution at the command line:
+
+If a command cannot execute, Domicile will explain
+what has changed since your last session and why.
+
 
 ```bash
 # Configure MOS connection (one-time setup)

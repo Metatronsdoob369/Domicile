@@ -1,5 +1,9 @@
 #!/bin/bash
 # Component migration script
+# # BOOTSTRAP / ONE-TIME MIGRATION SCRIPT
+# This script is NOT intended to be run repeatedly.
+# It does not assert architectural authority.
+
 
 set -e
 
@@ -12,7 +16,7 @@ cp -r ../contracts/core/* packages/contracts/src/ 2>/dev/null || true
 cp -r ../contracts/examples/* packages/contracts/src/examples/ 2>/dev/null || true
 echo "✅ Contracts migrated"
 
-# Phase 2: Copy core orchestration  
+# Phase 2: Copy core orchestration
 echo "🎛️ Phase 2: Migrating core orchestration..."
 mkdir -p packages/core/src
 cp -r ../openai-agents-js/src/orchestration/* packages/core/src/ 2>/dev/null || true
