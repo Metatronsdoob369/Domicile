@@ -1,0 +1,15 @@
+# Notion Intelligence Scraper - Dependencies
+# Core
+fastapi>=0.100.0
+uvicorn>=0.22.0
+pydantic>=2.0.0
+httpx>=0.24.0
+
+# Embeddings & AI (optional but recommended)
+openai>=1.0.0
+
+# Vector Storage (optional - falls back to local JSON)
+pinecone-client>=3.0.0
+
+# Development
+python-dotenv>=1.0.0
