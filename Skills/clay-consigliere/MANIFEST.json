@@ -1,0 +1,94 @@
+{
+  "skill": "clay-consigliere",
+  "version": "1.0.0",
+  "domain": "Orchestration/Governance/Routing",
+  "description": "The Consigliere router. LLM-based intent detection to route user requests to 7 specialist skills. Enforces 80% Ship rule, compliance gates, and local-first architecture.",
+  "dependencies": ["bun", "@anthropic-ai/sdk"],
+  "mcp_server": null,
+  "entry_point": "scripts/router.ts",
+  "requires_approval": [],
+  "tools": [
+    {
+      "name": "route",
+      "description": "Route user request to appropriate skill using LLM intent detection",
+      "requires_approval": false
+    },
+    {
+      "name": "route_with_approval",
+      "description": "Route and auto-approve actions requiring ARM mode",
+      "requires_approval": true
+    },
+    {
+      "name": "dry_run",
+      "description": "Show routing decision without executing",
+      "requires_approval": false
+    }
+  ],
+  "clay_i_validated": true,
+  "clay_persona_id": "18895da3",
+  "covenant": "Protect the build. Ship at 80%. Compliance sovereign. Local first. Delegate chaos. The Consigliere does not ask permission; the Consigliere executes with precision.",
+  "prime_directives": [
+    "MVP Protocol (80/20 Rule): Ship at 80%. Functionality > Aesthetics. Block premature optimization.",
+    "Compliance is Sovereign: 178 staff across 7 states. Compliance before features. If it breaks labor law, VETO IT.",
+    "Local Sovereignty: We are DeGoogling. Prioritize local-first, self-hosted. Cloud is backup only.",
+    "Delegate the Chaos: Administrative/unorganized tasks → sub-agents. Don't waste Operator's cycles."
+  ],
+  "jurisdiction": {
+    "citizens": "178 staff across 7 states",
+    "law": "gov.md + State Labor Compliance",
+    "threat": "Google reliance, cloud drift, perfectionism"
+  },
+  "routing_patterns": [
+    {
+      "pattern": "/(payroll|bamboo|hr|process.*pdf)/i",
+      "skill": "domicile-governance",
+      "action": "scan"
+    },
+    {
+      "pattern": "/(voice|speak|tts|synthesize)/i",
+      "skill": "personaplex-7b",
+      "action": "synthesize"
+    },
+    {
+      "pattern": "/(memory|remember|recall|memvid)/i",
+      "skill": "memvid",
+      "action": "query"
+    },
+    {
+      "pattern": "/(ui|canvas|design|pencil)/i",
+      "skill": "pencil-expert",
+      "action": "generate"
+    },
+    {
+      "pattern": "/(workflow|automation|intercom)/i",
+      "skill": "intercom-agent",
+      "action": "trigger"
+    },
+    {
+      "pattern": "/(audit|validate|check.*compliance)/i",
+      "skill": "domicile-governance",
+      "action": "audit"
+    }
+  ],
+  "skills_managed": [
+    "domicile-governance",
+    "personaplex-7b",
+    "memvid",
+    "supermemory",
+    "pencil-expert",
+    "intercom-agent"
+  ],
+  "env_required": ["ANTHROPIC_API_KEY", "SKILLS_DIR", "CLAY_PERSONA_ID"],
+  "env_optional": ["CLAY_APPROVED"],
+  "tests": null,
+  "documentation": [
+    "SKILL.md",
+    "references/CLAY_PERSONA_SYSTEM_PROMPT.md",
+    "references/mcp-spec.md",
+    "assets/gov.md",
+    "../INTEGRATION_TEST.md"
+  ],
+  "maintainer": "Joe Wales",
+  "last_updated": "2026-01-28",
+  "status": "production"
+}
