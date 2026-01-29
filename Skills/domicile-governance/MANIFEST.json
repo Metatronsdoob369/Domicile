@@ -1,0 +1,62 @@
+{
+  "skill": "domicile-governance",
+  "version": "1.0.0",
+  "domain": "HR/Payroll/Compliance",
+  "description": "BambooHR payroll processing, PDF extraction, compliance auditing. Dual-write to BambooHR + Supabase.",
+  "dependencies": [
+    "bun",
+    "@supabase/supabase-js",
+    "fuse.js",
+    "@modelcontextprotocol/sdk"
+  ],
+  "mcp_server": "scripts/bamboo-mcp.ts",
+  "entry_point": "scripts/run-mcp.ts",
+  "requires_approval": ["upload_payroll_entries", "audit", "delete"],
+  "tools": [
+    {
+      "name": "list_incoming_pdfs",
+      "description": "List all PDF files waiting for payroll processing",
+      "requires_approval": false
+    },
+    {
+      "name": "process_payroll_pdf",
+      "description": "Extract payroll data from a PDF (dry-run preview)",
+      "requires_approval": false
+    },
+    {
+      "name": "upload_payroll_entries",
+      "description": "Upload approved payroll entries to BambooHR and NocoDB (ARM action)",
+      "requires_approval": true
+    },
+    {
+      "name": "generate_payroll_report",
+      "description": "Generate a markdown summary report of payroll processing",
+      "requires_approval": false
+    }
+  ],
+  "clay_i_validated": true,
+  "covenant": "Profit from the error. Dual-write (BambooHR + Supabase). ARM mode for writes. Fuzzy matching with 0.4 threshold. LLC resolution via mapping. Local-first with cloud sync.",
+  "data_paths": {
+    "incoming": "/home/mcp-agent/xtrackados-data/incoming",
+    "processed": "/home/mcp-agent/xtrackados-data/processed",
+    "reports": "/home/mcp-agent/xtrackados-data/reports",
+    "llc_mapping": "/home/mcp-agent/xtrackados-data/llc-mapping.json"
+  },
+  "env_required": [
+    "BAMBOOHR_API_KEY",
+    "BAMBOOHR_COMPANY",
+    "SUPABASE_URL",
+    "SUPABASE_SECRET_KEY"
+  ],
+  "tests": "tests/governance.test.ts",
+  "documentation": [
+    "README.md",
+    "SKILL.md",
+    "assets/gov.md",
+    "references/mcp-spec.md"
+  ],
+  "maintainer": "Joe Wales",
+  "clay_persona_id": "18895da3",
+  "last_updated": "2026-01-28",
+  "status": "production"
+}
