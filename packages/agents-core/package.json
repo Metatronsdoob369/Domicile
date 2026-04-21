@@ -67,7 +67,7 @@
   ],
   "license": "MIT",
   "optionalDependencies": {
-    "@modelcontextprotocol/sdk": "^1.17.2"
+    "@modelcontextprotocol/sdk": "^1.26.0"
   },
   "dependencies": {
     "openai": "^5.20.2",
