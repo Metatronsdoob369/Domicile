@@ -5,7 +5,7 @@
     "@ai-sdk/openai": "1",
     "@openai/agents": "workspace:*",
     "@openai/agents-extensions": "workspace:*",
-    "zod": "3"
+    "zod": "4"
   },
   "scripts": {
     "build-check": "tsc --noEmit",
